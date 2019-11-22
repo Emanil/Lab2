@@ -36,7 +36,6 @@ int main()
 
 	} while (userinp == 'Y' || userinp == 'y');
 
-
 	return(0);
 }
 
