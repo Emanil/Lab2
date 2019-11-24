@@ -3,8 +3,29 @@
 #include <time.h>
 using namespace std;
 
-void array_rows_cols(int &arr, int size) {
-	cout << arr << endl;
+void array_rows_cols(int **arr, int userInpRows, int userInpColums) {
+	int adderRow = 0, adderColum=0;
+	for (int i = 0; i < userInpRows; i++) { //Loops userInpColums a number of userInpRows times
+
+		for (int j = 0; j < userInpColums; j++) { //Prints userInpColums times
+			cout << arr[i][j] << "  ";
+			adderColum = adderColum + arr[i][j];
+			adderRow = 0;
+			for(int x = 0; x < userInpRows; x++) {
+				//cout << arr[x][j] << "<- ";
+				adderRow = adderRow + arr[x][j];
+				//cout << "adderrow: " << adderRow << " ";
+				
+			}
+		}
+		cout << "[" << adderColum << "]";
+		adderColum = 0;
+		cout << endl;
+
+	}
+	cout << "[(" << adderRow << ")] ";
+	
+	
 }
 
 int main() {
@@ -20,24 +41,24 @@ int main() {
 
 	int** arr = new int* [userInpRows]; //Adds memory for the array
 	
-
 	for (int i = 0; i < userInpRows; i++) {
-		arr[i] = new int[userInpColums];
-		*arr[i] = rand() % 10; //random numbers from 0 to 9
-		cout << *arr[i];
-
-	}
-
-	for (int i = 0; i < userInpColums; i++) {
 		
-		*arr[i] = rand() % 10;
-		cout << *arr[i] << endl;
+		arr[i] = new int[userInpColums];
 	}
-	
-	//stuff
-
 
 	for (int i = 0; i < userInpRows; i++) {
+
+		for (int j = 0; j < userInpColums; j++) {
+			arr[i][j] = rand() % 10; // Adds random numbs from 0 to 9 to array
+		}
+		//cout << *arr[i] << endl;
+
+	}
+
+	array_rows_cols(arr, userInpRows, userInpColums);
+
+
+	for (int i = 0; i < userInpRows; i++) { // Deletes memory for the array
 		delete[] arr[i];
 	}
 	delete[] arr;
