@@ -42,7 +42,6 @@ int main() {
 	int** arr = new int* [userInpRows]; //Adds memory for the array
 	
 	for (int i = 0; i < userInpRows; i++) {
-		
 		arr[i] = new int[userInpColums];
 	}
 
