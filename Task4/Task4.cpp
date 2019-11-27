@@ -3,34 +3,54 @@ using namespace std;
 
 void swap_sort(int &a, int &b, int &c, bool order) {
 	int list[3] = {a, b, c};
+	int i = 0, n = i+1; // Iterators
 	if (order == 1) { // Ascending
-		for (int i = 0; i <= 1; i++) {
-			int n = i + 1;
+		while(list[0] > list[1] || list[0] > list[2] || list[1] > list[2]) {
+
+			// Swaps values between i and n
 			if (list[i] > list[n]) {
-				// Swaps values between i and n
 				int temp = list[i];
 				list[i] = list[n];
 				list[n] = temp;
-				if (list[0] > list[1]) {
-					--i;
+			}
+			//-----------------
+			i++;
+			n++;
+			//Resetts the values of the iterators
+			if (i == 3) { 
+				i = 0;
+			}
+			if (n >= 3) {
+				n = 1;
+			}
+			//-----------------
+		}
+		a = list[0];
+		b = list[1];
+		c = list[2];
+
+	} else if (order == 0) { // Descending
+		for (int i = 0; i <= 1; i++) {
+			while (list[0] < list[1] || list[0] < list[2] || list[1] < list[2]) {
+
+				// Swaps values between i and n
+				if (list[i] < list[n]) {
 					int temp = list[i];
 					list[i] = list[n];
 					list[n] = temp;
+				}
+				i++;
+				n++;
+				if (i == 3) {
+					i = 0;
+				}
+				if (n >= 3) {
+					n = 1;
 				}
 			}
 			a = list[0];
 			b = list[1];
 			c = list[2];
-		}
-	} else if (order == 0) { // Descending
-		for (int i = 0; i <= 1; i++) {
-			int n = i + 1;
-			if (list[i] < list[n]) {
-				// Swaps values between i and n
-				int temp = list[i];
-				list[i] = list[n];
-				list[n] = temp;
-			}
 		}
 	}
 
