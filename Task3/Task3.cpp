@@ -4,33 +4,39 @@
 using namespace std;
 
 void array_rows_cols(int **arr, int userInpRows, int userInpColums) {
-	int adderRow = 0, adderColum=0;
+	int adderRow = 0, adderColum=0, lastColumn=0, lastRow=0;
 	for (int i = 0; i < userInpRows; i++) { //Loops userInpColums a number of userInpRows times
 
 		for (int j = 0; j < userInpColums; j++) { //Prints userInpColums times
 			cout << arr[i][j] << "  ";
 			adderColum = adderColum + arr[i][j];
-			adderRow = 0;
-			for(int x = 0; x < userInpRows; x++) {
-				//cout << arr[x][j] << "<- ";
-				adderRow = adderRow + arr[x][j];
-				//cout << "adderrow: " << adderRow << " ";
-				
+			if (j == userInpColums - 1) { // last of column to be added to last of row
+				lastColumn = adderColum;
 			}
 		}
-		cout << "[" << adderColum << "]";
+		cout << adderColum;
+		
 		adderColum = 0;
 		cout << endl;
-
 	}
-	cout << "[(" << adderRow << ")] ";
 	
-	
+	for (int j = 0; j < userInpColums; j++) { // Had to copy this for for j
+		for (int x = 0; x < userInpRows; x++) {
+			adderRow = adderRow + arr[x][j];
+			if (x == userInpRows - 1) {
+				lastRow = adderRow;
+			}
+		}
+		cout << adderRow << " ";
+		
+		adderRow = 0;
+	}
+	cout << "[" << lastRow + lastColumn << "]" << endl;
 }
 
 int main() {
 
-	//srand(time(NULL)); // Makes rand() random every run
+	//srand(time(NULL)); // Makes rand() random every run (bad for debugging, good for testing)
 
 	int userInpRows, userInpColums;
 	cout << "Enter number of rows: ";

@@ -24,10 +24,7 @@ void shrink_array(int *arr, int size) {
 				currentSize++;
 			}
 		}
-		
 	}
-
-	
 }
 
 int main() {
@@ -52,7 +49,6 @@ int main() {
 		cout << arr[i];
 		if (i != size - 1) {
 			cout << ", ";
-
 		}
 		else
 			cout << endl;
