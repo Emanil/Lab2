@@ -56,7 +56,6 @@ int main() {
 		for (int j = 0; j < userInpColums; j++) {
 			arr[i][j] = rand() % 10; // Adds random numbs from 0 to 9 to array
 		}
-		//cout << *arr[i] << endl;
 
 	}
 

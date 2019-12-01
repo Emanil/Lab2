@@ -26,7 +26,6 @@ int main() {
 	int returnedValue = is_sorted(array);
 	cout << "Is the array sorted? " << returnedValue << endl;
 
-
 	return(0);
 }
 

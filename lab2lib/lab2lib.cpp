@@ -225,7 +225,3 @@ int vector_Alternatives(int userInp, string wordInp, string userYN, vector<strin
 	}
 }
 //--------------------------------------
-
-int main() {
-
-}

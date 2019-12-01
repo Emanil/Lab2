@@ -30,12 +30,12 @@ int vector_Alternatives(int userInp, string wordInp, string userYN, vector<strin
 	case 3:
 		cout << "Search for a name: ";
 		cin >> wordInp;
-		len = wordInp.length(); //
-		for (int i = 0; i < vector.size(); i++) {
-			auto stren = vector.at(i);
+		len = wordInp.length(); // Lenght of the search
+		for (int i = 0; i < vector.size(); i++) { // Do for the whole vector
+			auto currentWord = vector.at(i);
 			for (int n = 0; n < len; n++) {
-				if (wordInp[n] == stren[n] && n == len - 1) {
-					cout << "Found: " << stren << " ";
+				if (wordInp[n] == currentWord[n] && n == len - 1) { // If characters of the word in the vector and search are the same for len, found 
+					cout << "Found: " << currentWord << " ";
 				}
 			}
 		}
@@ -95,5 +95,6 @@ int main() {
 		cin >> userInp;
 
 		userInp=vector_Alternatives(userInp, wordInp, userYN, vector);
-	} 
+	}
+	return(0);
 }

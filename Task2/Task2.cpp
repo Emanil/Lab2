@@ -2,7 +2,6 @@
 #include <cstring>
 using namespace std;
 
-
 bool is_palindrome(char str[], int len) {
 	for (int i = len - 1; i >= 0; i--) {
 		if (str[len - 1 - i] != str[i]) // Checks if the characters from oposite side are the same
@@ -11,8 +10,8 @@ bool is_palindrome(char str[], int len) {
 	return true;
 }
 
-int main()
-{
+int main() {
+
 	char userinp;
 	char word[20]; //Set the word to a maximum of 20 characters
 	int lenght;

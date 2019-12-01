@@ -5,7 +5,7 @@ void swap_sort(int &a, int &b, int &c, bool order) {
 	int list[3] = {a, b, c};
 	int i = 0, n = i+1; // Iterators
 	if (order == 1) { // Ascending
-		while(list[0] > list[1] || list[0] > list[2] || list[1] > list[2]) {
+		while(list[0] > list[1] || list[0] > list[2] || list[1] > list[2]) { // While not sorted, can definitely be written better
 
 			// Swaps values between i and n
 			if (list[i] > list[n]) {
@@ -16,7 +16,8 @@ void swap_sort(int &a, int &b, int &c, bool order) {
 			//-----------------
 			i++;
 			n++;
-			//Resetts the values of the iterators
+			// Resetts the values of the iterators
+			// So that we can look at the array again
 			if (i == 3) { 
 				i = 0;
 			}
@@ -24,10 +25,7 @@ void swap_sort(int &a, int &b, int &c, bool order) {
 				n = 1;
 			}
 			//-----------------
-		}
-		a = list[0]; // Untill now a,b,c hasn't changed
-		b = list[1];
-		c = list[2];
+		}	
 
 	} else if (order == 0) { // Descending
 		for (int i = 0; i <= 1; i++) {
@@ -48,11 +46,11 @@ void swap_sort(int &a, int &b, int &c, bool order) {
 					n = 1;
 				}
 			}
-			a = list[0];
-			b = list[1];
-			c = list[2];
 		}
 	}
+	a = list[0]; // Untill now a,b,c hasn't changed
+	b = list[1];
+	c = list[2];
 
 }
 
@@ -78,5 +76,5 @@ int main() {
 
 		cout << a << ", " << b << ", " << c << endl;
 	} 
-
+	return(0);
 }

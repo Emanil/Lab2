@@ -1,11 +1,151 @@
 #include <iostream>
 #include <vector>
+#include <lab2lib.cpp>
 using namespace std;
+
+void task1() {
+	int array[4] = {};
+	for (int i = 0; i < 4; i++) {
+		cout << "Enter 4 numbers for the array: ";
+		cin >> array[i];
+	}
+	int returnedValue = is_sorted(array);
+	cout << "Is the array sorted? " << returnedValue << endl;
+}
+
+void task2() {
+	char userinp;
+	char word[20]; //Set the word to a maximum of 20 characters
+	int lenght;
+
+	do {
+		cout << "Type a word: ";
+		cin >> word;
+
+		lenght = strlen(word);
+		int returned_Value = is_palindrome(word, lenght);
+
+		if (returned_Value == 0)
+			cout << "Not a palindrome" << endl;
+
+		else if (returned_Value == 1)
+			cout << "palindrome" << endl;
+
+		cout << "Test again (Y/N)?" << endl;
+		cin >> userinp;
+
+	} while (userinp == 'Y' || userinp == 'y');
+}
+
+void task3() {
+
+	//srand(time(NULL)); // Makes rand() random every run (bad for debugging, good for testing)
+
+	int userInpRows, userInpColums;
+	cout << "Enter number of rows: ";
+	cin >> userInpRows;
+
+	cout << "Enter number of columns: ";
+	cin >> userInpColums;
+
+	int** arr = new int* [userInpRows]; //Adds memory for the array
+
+	for (int i = 0; i < userInpRows; i++) {
+		arr[i] = new int[userInpColums];
+	}
+
+	for (int i = 0; i < userInpRows; i++) {
+
+		for (int j = 0; j < userInpColums; j++) {
+			arr[i][j] = rand() % 10; // Adds random numbs from 0 to 9 to array
+		}
+	}
+
+	array_rows_cols(arr, userInpRows, userInpColums);
+
+	for (int i = 0; i < userInpRows; i++) { // Deletes memory for the array
+		delete[] arr[i];
+	}
+	delete[] arr;
+}
+
+void task4() {
+	int userInp = 0, a, b, c;
+	bool order;
+	while (true) {
+		cout << "Give 'a' a value (0 = quit): ";
+		cin >> userInp;
+		if (userInp == 0)
+			break;
+		a = userInp;
+		cout << "Give 'b' a value: ";
+		cin >> userInp;
+		b = userInp;
+		cout << "Give 'c' a value: ";
+		cin >> userInp;
+		c = userInp;
+		cout << "Sort ascending/descending (1/0): ";
+		cin >> order;
+
+		swap_sort(a, b, c, order);
+
+		cout << a << ", " << b << ", " << c << endl;
+	}
+}
+
+void task5() {
+	int arr[] = { 5,3,7,3,9,1,2 };
+	int size = *(&arr + 1) - arr; // Difference between *(&arr + 1) and arr is the lenght
+
+	cout << "Input array: ";
+	for (int i = 0; i < size; i++) {
+		cout << arr[i];
+		if (i != size - 1) {
+			cout << ", ";
+
+		}
+		else
+			cout << endl;
+	}
+
+	shrink_array(arr, size);
+
+	cout << "Output array: ";
+	for (int i = 0; i < size; i++) {
+		cout << arr[i];
+		if (i != size - 1) {
+			cout << ", ";
+		}
+		else
+			cout << endl;
+	}
+}
+
+void task6() {
+	int userInp = 1;
+	string wordInp, userYN;
+	vector<string> vector;
+	while (userInp) {
+		cout << endl;
+		cout << "MENU:" << endl;
+		cout << "1: Initialise vector" << endl;
+		cout << "2: Insert" << endl;
+		cout << "3: Search" << endl;
+		cout << "4: Delete" << endl;
+		cout << "5: Print" << endl;
+		cout << "6: Quit" << endl;
+		cout << endl;
+		cout << "Input: ";
+		cin >> userInp;
+
+		userInp = vector_Alternatives(userInp, wordInp, userYN, vector);
+	}
+}
 
 int main() {
 	while (true) {
 		int inpChoice;
-		cout << "Menu :" << endl;
+		cout << "Menu:" << endl;
 		cout << "1: Task 1" << endl;
 		cout << "2: Task 2" << endl;
 		cout << "3: Task 3" << endl;
@@ -13,51 +153,43 @@ int main() {
 		cout << "5: Task 5" << endl;
 		cout << "6: Task 6" << endl;
 		cout << "0: Exit" << endl;
+		cout << "Input: ";
 		cin >> inpChoice;
 
 		switch (inpChoice) {
+
 		case 1:
-			int is_sorted(int arr[4]);
+			task1();
 			break;
 
 		case 2:
-			bool is_palindrome(char str[], int len);
+			task2();
 			break;
 
 		case 3:
-			void array_rows_cols(int** arr, int userInpRows, int userInpColums);
+			task3();
 			break;
 
 		case 4:
-			void swap_sort(int& a, int& b, int& c, bool order);
+			task4();
 			break;
 
 		case 5:
-			void shrink_array(int* arr, int size);
+			task5();
 			break;
 
 		case 6:
-			int vector_Alternatives(int userInp, string wordInp, string userYN, vector<string> & vector);
+			task6();
 			break;
 
 		case 0:
 			return 0;
 
 		default:
-			cout << "No such task exist" << endl;
+			cout << "No such task exists" << endl;
 			break;
 		}
 	}
 	
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

@@ -154,11 +154,6 @@
   <ItemGroup>
     <ClCompile Include="Task7.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\lab2lib\lab2lib.vcxproj">
-      <Project>{942465ad-741b-46e3-a12f-d7d6d50a4d6b}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
