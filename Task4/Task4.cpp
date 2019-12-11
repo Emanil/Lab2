@@ -51,7 +51,6 @@ void swap_sort(int &a, int &b, int &c, bool order) {
 	a = list[0]; // Untill now a,b,c hasn't changed
 	b = list[1];
 	c = list[2];
-
 }
 
 int main() {

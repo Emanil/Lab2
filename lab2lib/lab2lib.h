@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+#include <vector>
+#include <string>
 
 int is_sorted(int arr[4]);
 
